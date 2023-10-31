@@ -3,27 +3,27 @@ import { useEffect, useState } from "react";
 interface Champion {
   name: string;
   key: string;
+  id: string;
 }
 
-const ENDPOINT =
+const CHAMPIONS_ENDPOINT =
   "http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion.json";
 
 export default function App() {
   const [champions, setChampions] = useState<Champion[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  console.log(champions);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(ENDPOINT);
+        const response = await fetch(CHAMPIONS_ENDPOINT);
         const data = await response.json();
         const championsData: { [key: string]: Champion } = data.data;
         const championsAndKeys: Champion[] = Object.values(championsData).map(
-          champion => ({
+          (champion) => ({
             key: champion.key,
             name: champion.name,
+            id: champion.id,
           })
         );
         setChampions(championsAndKeys);
@@ -33,9 +33,9 @@ export default function App() {
         setIsLoading(false);
       }
     };
+
     fetchData();
   }, []);
-
 
   return (
     <div>
@@ -43,11 +43,17 @@ export default function App() {
         <div>Loading...</div>
       ) : (
         <div>
-          <ul>
-            {champions.map(champion => (
-              <li key={champion.key}>{champion.name}</li>
+          <div style={{display: "flex", flexWrap: "wrap"}}>
+            {champions.map((champion) => (
+              <div key={champion.key}>
+                <h2>{champion.name}</h2>
+                <img
+                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`} // 0 is for Default Skin
+                  width={192}
+                />
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>
