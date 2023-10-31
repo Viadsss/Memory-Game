@@ -43,7 +43,7 @@ export default function App() {
         <div>Loading...</div>
       ) : (
         <div>
-          <div style={{display: "flex", flexWrap: "wrap"}}>
+          <div style={{display: "flex", flexWrap: "wrap", gap:"1rem"}}>
             {champions.map((champion) => (
               <div key={champion.key}>
                 <h2>{champion.name}</h2>
