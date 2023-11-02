@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { getRandomChampions } from "./utils";
+import { GameBoard } from "./components/GameBoard";
 
 interface Champion {
   name: string;
@@ -9,9 +11,16 @@ interface Champion {
 const CHAMPIONS_ENDPOINT =
   "http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion.json";
 
-export default function App() {
+export default function Prac() {
   const [champions, setChampions] = useState<Champion[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedChampions, setSelectedChampions] = useState<Champion[]>([]);
+  const [randomChampions, setRandomChampions] = useState<Champion[]>([]);
+  const [totalCards, setTotalCards] = useState(3);
+  const [selectedCards, setSelectedCards] = useState(1);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,25 +46,93 @@ export default function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleRandomChampions = () => {
+      const randomChampions = getRandomChampions(
+        champions,
+        selectedChampions,
+        totalCards,
+        selectedCards
+      );
+      setRandomChampions(randomChampions);
+    };
+
+    handleRandomChampions();
+  }, [champions, selectedChampions, totalCards, selectedCards]);
+
+  const handleChampionClick = (champion: Champion) => {
+    !selectedChampions.some(
+      (selectedChampion) => selectedChampion.key === champion.key
+    )
+      ? handleWin(champion)
+      : handleLose();
+  };
+
+  const handleWin = (champion: Champion) => {
+    setIsFlipped(true);
+    setScore(score + 1);
+
+    setTimeout(() => {
+      setSelectedChampions([...selectedChampions, champion]);
+      changeDifficulty(score);
+    }, 750);
+
+    setTimeout(() => {
+      setIsFlipped(false);
+    }, 1500);
+  };
+
+  const handleLose = () => {
+    // Set the states to its Initial Value
+    if (score > bestScore) setBestScore(score);
+    alert("You Lose!");
+    setScore(0);
+    setSelectedChampions([]);
+    setRandomChampions([]);
+    setTotalCards(3);
+    setSelectedCards(1);
+  };
+
+  const changeDifficulty = (score: number) => {
+    switch (score) {
+      case 5:
+        setTotalCards(4);
+        break;
+      case 7:
+        setSelectedCards(2);
+        break;
+      case 10:
+        setTotalCards(5);
+        break;
+      case 15:
+        setSelectedCards(3);
+        break;
+      case 20:
+        setTotalCards(6);
+        break;
+      case 25:
+        setSelectedCards(4);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          <div style={{display: "flex", flexWrap: "wrap", gap:"1rem"}}>
-            {champions.map((champion) => (
-              <div key={champion.key}>
-                <h2>{champion.name}</h2>
-                <img
-                  src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`} // 0 is for Default Skin
-                  width={192}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <p>Score: {score}</p>
+      <p>Best Score: {bestScore}</p>
+      <div>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <GameBoard
+            randomChampions={randomChampions}
+            onCardClick={handleChampionClick}
+            isFlipped={isFlipped}
+          />
+        )}
+      </div>
     </div>
   );
 }
