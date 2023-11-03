@@ -1,7 +1,7 @@
 import React from "react";
 import { getChampionImage } from "../utils";
 import BackCardImg from "../assets/Back_Card.jpg";
-import "../stylings/card.css";
+import "../styles/card.css";
 
 interface Champion {
   name: string;

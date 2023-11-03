@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getRandomChampions } from "./utils";
 import { GameBoard } from "./components/GameBoard";
+import { Navbar } from "./components/Navbar";
+import "./styles/App.css";
 
 interface Champion {
   name: string;
@@ -120,6 +122,7 @@ export default function Prac() {
 
   return (
     <div>
+      <Navbar />
       <p>Score: {score}</p>
       <p>Best Score: {bestScore}</p>
       <div>

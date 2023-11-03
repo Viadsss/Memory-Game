@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Spiegel";
+  src: url("../fonts/Spiegel-Regular.otf") format("opentype");
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Spiegel", sans-serif;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+body {
+  min-height: 100vh;
+}

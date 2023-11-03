@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Beaufort";
+  src: url("../fonts/BeaufortforLOL-Regular.otf");
+}
+
+header {
+  background: #111111;
+  color: #f9f9f9;
+  padding: 0.5rem 1rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  justify-content: center;
+  background-color: #282828;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  gap: 0.1rem;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+.link:visited {
+  color: inherit;
+}
+
+.link:hover {
+  background-color: #f9f9f9;
+  color: #282828;
+}
