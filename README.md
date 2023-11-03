@@ -6,7 +6,7 @@ The **Memory Card Game** project is created according to the assignment from **T
 
 ![Preview](public/Memory-Game-League.png)
 
-### 🔗 **Live preview** of the project is [here](https://alex-dishen.github.io/memory-card/).
+### 🔗 **Live preview** of the project is [here](https://viads-memory-game.netlify.app/).
 
 ## 🚀 **Getting Started**
 
