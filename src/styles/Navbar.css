@@ -9,7 +9,7 @@ header {
   align-items: center;
   justify-content: space-between;
   /* key for centering even zooming */
-  max-width: 1536px; 
+  max-width: 1536px;
   margin: auto;
 }
 
@@ -70,4 +70,12 @@ header {
 .best-score {
   background-color: rgb(19, 216, 246);
   padding: 0.5rem 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
 }
