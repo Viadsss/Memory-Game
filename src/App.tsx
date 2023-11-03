@@ -11,7 +11,7 @@ interface Champion {
 }
 
 const CHAMPIONS_ENDPOINT =
-  "http://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion.json";
+  "https://ddragon.leagueoflegends.com/cdn/13.21.1/data/en_US/champion.json";
 
 export default function Prac() {
   const [champions, setChampions] = useState<Champion[]>([]);
