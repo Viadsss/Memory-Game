@@ -3,6 +3,12 @@
   width: 200px;
   position: relative;
   border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card-front,
@@ -35,4 +41,30 @@
 
 .card-back.flipped {
   transform: perspective(1000px) rotateY(0deg);
+}
+
+.card > img.card-front {
+  -webkit-mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(0, 0, 0, 0.2) 50%,
+    #000 75%
+  );
+  mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(0, 0, 0, 0.2) 50%,
+    #000 75%
+  );
+  -webkit-mask-size: 800%;
+  mask-size: 800%;
+  -webkit-mask-position: 0;
+  mask-position: 0;
+}
+
+.card > img.card-front:hover {
+  transition: mask-position 2s ease, -webkit-mask-position 2s ease;
+  -webkit-mask-position: 120%;
+  mask-position: 120%;
+  opacity: 1;
 }
