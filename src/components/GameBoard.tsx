@@ -1,5 +1,6 @@
 import React from "react";
 import { ChampionCard } from "./ChampionCard";
+import "../styles/GameBoard.css";
 
 interface Champion {
   name: string;
@@ -19,15 +20,14 @@ export const GameBoard: React.FC<Props> = ({
   isFlipped,
 }) => {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+    <div className="gameboard glass">
       {randomChampions.map((champion) => (
-        <div key={champion.key}>
-          <ChampionCard
-            champion={champion}
-            onClick={() => onCardClick(champion)}
-            isFlipped={isFlipped}
-          />
-        </div>
+        <ChampionCard
+          champion={champion}
+          onClick={() => onCardClick(champion)}
+          isFlipped={isFlipped}
+          key={champion.key}
+        />
       ))}
     </div>
   );

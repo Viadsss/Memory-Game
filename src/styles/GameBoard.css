@@ -1,0 +1,22 @@
+.gameboard {
+  max-width: 1536px;
+  margin: auto;
+  margin-top: 2rem;
+  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5rem;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.29);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.3px);
+  -webkit-backdrop-filter: blur(11.3px);
+}

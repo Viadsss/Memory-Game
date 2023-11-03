@@ -22,10 +22,12 @@ export const ChampionCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="card" onClick={onClick}>
-      <img
-        src={getChampionImage(champion.key)}
-        className={`card-front ${isFlipped ? "flipped" : ""}`}
-      />
+      <div className={`card-front ${isFlipped ? "flipped" : ""}`}>
+        <img src={getChampionImage(champion.key)} className="card-front-img" />
+        <div className="card-name-container">
+          <span className="card-name">{champion.name}</span>
+        </div>
+      </div>
       <img
         src={BackCardImg}
         className={`card-back ${isFlipped ? "flipped" : ""}`}

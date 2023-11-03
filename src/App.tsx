@@ -121,21 +121,17 @@ export default function Prac() {
   };
 
   return (
-    <div>
-      <Navbar />
-      <p>Score: {score}</p>
-      <p>Best Score: {bestScore}</p>
-      <div>
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          <GameBoard
-            randomChampions={randomChampions}
-            onCardClick={handleChampionClick}
-            isFlipped={isFlipped}
-          />
-        )}
-      </div>
+    <div className="main">
+      <Navbar score={score} bestScore={bestScore} />
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <GameBoard
+          randomChampions={randomChampions}
+          onCardClick={handleChampionClick}
+          isFlipped={isFlipped}
+        />
+      )}
     </div>
   );
 }

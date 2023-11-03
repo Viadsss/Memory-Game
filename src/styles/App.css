@@ -19,4 +19,8 @@ html {
 
 body {
   min-height: 100vh;
+  background-image: url("../assets/arcane_bg.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
