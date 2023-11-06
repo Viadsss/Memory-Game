@@ -77,7 +77,7 @@ export default function Prac() {
     setTimeout(() => {
       setSelectedChampions([...selectedChampions, champion]);
       changeDifficulty(score);
-    }, 750);
+    }, 350);
 
     setTimeout(() => {
       setIsFlipped(false);
