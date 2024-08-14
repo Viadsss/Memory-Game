@@ -50,8 +50,9 @@ export const getRandomChampions = (
   return randomChampions;
 };
 
-export const getChampionImage = (key: string): string => {
-  // 000 is for deafault skin
-  const imageSrc = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/${key}/${key}000.jpg`;
+export const getChampionImage = (id: string): string => {
+  // 0 at the end is for deafault skin
+  const formattedId = id.toLowerCase();
+  const imageSrc = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/${formattedId}/skins/base/images/${formattedId}_splash_tile_0.jpg`;
   return imageSrc;
 };
