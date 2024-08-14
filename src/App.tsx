@@ -37,6 +37,8 @@ export default function Prac() {
             id: champion.id,
           })
         );
+
+        console.log(championsAndKeys);
         setChampions(championsAndKeys);
         setIsLoading(false);
       } catch (error) {
@@ -81,7 +83,7 @@ export default function Prac() {
 
     setTimeout(() => {
       setIsFlipped(false);
-    }, 1500);
+    }, 1800);
   };
 
   const handleLose = () => {
